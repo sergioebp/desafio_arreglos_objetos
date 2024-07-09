@@ -91,6 +91,17 @@ const propiedades_alquiler = [
         smoke: false,
         pets: false
     },
+    {
+        nombre: 'Casa de campo',
+        src: 'https://i.blogs.es/c68014/casa-3d/450_1000.jpeg',
+        descripcion: 'Simple casa en medio del bosque.',
+        ubicacion: '123 Second Street, Route 321',
+        habitaciones: 1,
+        baños: 1,
+        costo: '1.000',
+        smoke: true,
+        pets: true
+    },
 ];
 
 const propiedades_venta = [
@@ -127,30 +138,69 @@ const propiedades_venta = [
         smoke: false,
         pets: true
     },
-]
-
-let propiedades_alquiler_txt = ''
-propiedades_alquiler.slice(0,3).forEach(function(propiedad) {
-    propiedades_alquiler_txt += constructorhtml(propiedad)
-})
-
-let propiedades_venta_txt = ''
-propiedades_venta.slice(0,3).forEach(function(propiedad) {
-    propiedades_venta_txt += constructorhtml(propiedad)
-})
-
+    {
+        nombre: 'Casa de lujo con piscina',
+        src: 'https://gpvivienda.com/blog/wp-content/uploads/2023/03/ralph-ravi-kayden-mR1CIDduGLc-unsplash-1-1-1024x680.jpg',
+        descripcion: 'Costosa casa con  fachada blanca y piscina.',
+        ubicacion: 'Mr elegant condo, 234 street',
+        habitaciones: 4,
+        baños: 5,
+        costo: '10.000',
+        smoke: true,
+        pets: false
+    },
+];
 
 let alquileres = document.getElementById('alquiler')
 let ventas = document.getElementById('venta')
+let pagina_ventas = document.getElementById('pagina-venta')
+let pagina_alquileres = document.getElementById('pagina-alquiler')
 
-alquileres.innerHTML =  ('<h2>Propiedades en alquiler</h2>' +
-                        '<div class="row">' +
-                        propiedades_alquiler_txt +
-                        '</div>' +
-                        '<a href="/propiedades_alquiler.html" class="btn btn-dark">Ver todas las propiedades en alquiler</a>');
-ventas.innerHTML = ('<h2>Propiedades en venta</h2>' +
-                    '<div class="row">' +
-                    propiedades_venta_txt +
-                    '</div>' +
-                    '<a href="/propiedades_venta.html" class="btn btn-dark">Ver todas las propiedades en venta</a>'
-                        );
+let propiedades_alquiler_txt = ''
+let propiedades_venta_txt = ''
+
+if (alquileres !== null) {
+    propiedades_alquiler.slice(0,3).forEach(function(propiedad) {
+        propiedades_alquiler_txt += constructorhtml(propiedad)
+    });
+    alquileres.innerHTML =  ('<h2>Propiedades en alquiler</h2>' +
+        '<div class="row">' +
+        propiedades_alquiler_txt +
+        '</div>' +
+        '<a href="/propiedades_alquiler.html" class="btn btn-dark">Ver todas las propiedades en alquiler</a>'
+    );
+}
+
+if (ventas !== null) {
+    propiedades_venta.slice(0,3).forEach(function(propiedad) {
+        propiedades_venta_txt += constructorhtml(propiedad)
+    });
+    ventas.innerHTML = ('<h2>Propiedades en venta</h2>' +
+        '<div class="row">' +
+        propiedades_venta_txt +
+        '</div>' +
+        '<a href="/propiedades_venta.html" class="btn btn-dark">Ver todas las propiedades en venta</a>'
+    );
+}
+
+if (pagina_alquileres !== null) {
+    propiedades_alquiler.forEach(function(propiedad) {
+        propiedades_alquiler_txt += constructorhtml(propiedad)
+    });
+    pagina_alquileres.innerHTML = ('<h2>Propiedades en alquiler</h2>' +
+        '<div class="row">' +
+        propiedades_alquiler_txt +
+        '</div>'
+    );
+}
+
+if (pagina_ventas !== null) {
+    propiedades_venta.forEach(function(propiedad) {
+        propiedades_venta_txt += constructorhtml(propiedad)
+    });
+    pagina_ventas.innerHTML = ('<h2>Propiedades en venta</h2>' +
+        '<div class="row">' +
+        propiedades_venta_txt +
+        '</div>'
+    );
+}
